@@ -119,6 +119,14 @@
             margin-top: 40px;
             letter-spacing: 1px;
         }
+
+        /* Netlify badge ko hide karne ke liye CSS */
+        iframe[src*="netlify"], div[style*="z-index: 2147483647"], a[href*="netlify.com"] {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
     </style>
 </head>
 <body>
@@ -167,6 +175,18 @@
     <footer>
         <p>POWERED BY <span style="color: #d4ff00;">THE SYNDICATE</span></p>
     </footer>
+
+    <!-- Netlify badge ko hatane ke liye JavaScript -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('a, div, iframe');
+            elements.forEach(el => {
+                if (el.href && el.href.includes('netlify.com')) {
+                    el.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
