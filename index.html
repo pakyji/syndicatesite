@@ -23,6 +23,7 @@
             border-bottom: 1px solid #222;
             padding-bottom: 15px;
             margin-bottom: 30px;
+            position: relative;
         }
         .logo {
             font-size: 14px;
@@ -35,7 +36,81 @@
             border: 1px solid #333;
             padding: 6px 12px;
             border-radius: 50%;
+            cursor: pointer;
+            background: #141414;
+            color: #fff;
+            transition: 0.2s;
         }
+        .menu-icon:active {
+            background: #222;
+        }
+        
+        /* Sliding Mobile Menu Overlay */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            height: 100%;
+            background-color: #121212;
+            border-left: 1px solid #222;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 25px;
+            transition: right 0.3s ease-in-out;
+        }
+        .nav-menu.active {
+            right: 0;
+        }
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .close-btn {
+            font-size: 22px;
+            color: #888;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #d4ff00;
+        }
+        
+        /* Backdrop blur when menu is open */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            display: none;
+        }
+        .overlay.active {
+            display: block;
+        }
+
         .hero {
             background: linear-gradient(135deg, #111 0%, #000 100%);
             border: 1px solid #222;
@@ -120,7 +195,7 @@
             letter-spacing: 1px;
         }
 
-        /* Netlify badge ko hide karne ke liye CSS */
+        /* Netlify badge hiding */
         iframe[src*="netlify"], div[style*="z-index: 2147483647"], a[href*="netlify.com"] {
             display: none !important;
             opacity: 0 !important;
@@ -131,9 +206,25 @@
 </head>
 <body>
 
+    <!-- Backdrop Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sliding Menu Drawer -->
+    <div class="nav-menu" id="navMenu">
+        <div class="nav-header">
+            <span style="color: #d4ff00; font-weight: bold; font-size: 14px;">NAVIGATION</span>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="menu-link">Home</a></li>
+            <li><a href="https://discord.gg/syndicateps" target="_blank" class="menu-link">Join Discord ↗</a></li>
+            <li><a href="#join" class="menu-link">Apply for Membership</a></li>
+        </ul>
+    </div>
+
     <header>
         <div class="logo">● THE SYNDICATE</div>
-        <div class="menu-icon">☰</div>
+        <div class="menu-icon" id="menuBtn">☰</div>
     </header>
 
     <section class="hero">
@@ -154,10 +245,7 @@
         <h2>Apply for membership.</h2>
         <p style="color: #888; font-size: 13px; margin-bottom: 15px;">Tell us about yourself and what you are building.</p>
         
-        <!-- Aapki email yahan configured hai -->
         <form action="https://formsubmit.co/pakyji24@gmail.com" method="POST">
-            
-            <!-- Captcha hatane ke liye -->
             <input type="hidden" name="_captcha" value="false">
             
             <div class="form-group">
@@ -183,7 +271,31 @@
         <p>POWERED BY <span style="color: #d4ff00;">THE SYNDICATE</span></p>
     </footer>
 
+    <!-- JavaScript for Menu toggle and Netlify badge remover -->
     <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Netlify badge remover script
         window.addEventListener('DOMContentLoaded', () => {
             const elements = document.querySelectorAll('a, div, iframe');
             elements.forEach(el => {
