@@ -1,457 +1,948 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Syndicate</title>
-    <style>
-        @keyframes colorShift {
-            0% { color: #d4ff00; }
-            33% { color: #00ffcc; }
-            66% { color: #bd00ff; }
-            100% { color: #d4ff00; }
-        }
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20261002-05-536c453","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/6542d56fbfe7a3eb.telemetry_sdk.js" integrity="sha512-ECdM0nK7EkwDuOqho2qxgyRQXyBHk9hZqRKMBr+Xsu6zjeHlt+qkO2N2YRiHN7Kg4e1fEHDhjIp4bGJYVypv1g=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Syndicate — The Future Wave</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #090a08;
+      --panel: #11120e;
+      --panel-soft: #151710;
+      --line: #555542;
+      --line-soft: rgba(142, 139, 103, 0.38);
+      --peach: #e4a077;
+      --lime: #a8ee52;
+      --muted: #a5a496;
+      --cream: #f2f0e8;
+    }
 
-        @keyframes borderGlow {
-            0% { border-color: rgba(212, 255, 0, 0.4); }
-            33% { border-color: rgba(0, 255, 204, 0.4); }
-            66% { border-color: rgba(189, 0, 255, 0.4); }
-            100% { border-color: rgba(212, 255, 0, 0.4); }
-        }
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+    }
 
-        @keyframes bgGlow {
-            0% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.08) 0%, #000 100%); }
-            33% { background: linear-gradient(135deg, rgba(0, 255, 204, 0.08) 0%, #000 100%); }
-            66% { background: linear-gradient(135deg, rgba(189, 0, 255, 0.08) 0%, #000 100%); }
-            100% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.08) 0%, #000 100%); }
-        }
+    body {
+      width: 100%;
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      background: var(--ink);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            padding: 20px;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .welcome-banner {
-            text-align: center;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            background: rgba(20, 20, 20, 0.6);
-            border: 1px solid #222;
-            border-radius: 10px;
-            animation: borderGlow 8s infinite;
-        }
-        .welcome-banner h2 {
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            animation: colorShift 8s infinite;
-        }
+    ::selection {
+      background: var(--peach);
+      color: #17120e;
+    }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .logo {
-            font-size: 14px;
-            letter-spacing: 1px;
-            font-weight: bold;
-            animation: colorShift 8s infinite;
-        }
-        .menu-icon {
-            font-size: 18px;
-            border: 1px solid #333;
-            padding: 6px 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            background: #141414;
-            color: #fff;
-            animation: borderGlow 8s infinite;
-            transition: 0.2s;
-        }
-        
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 75%;
-            height: 100%;
-            background-color: #121212;
-            border-left: 1px solid #222;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding: 40px 25px;
-            transition: right 0.3s ease-in-out;
-        }
-        .nav-menu.active {
-            right: 0;
-        }
-        .nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        .close-btn {
-            font-size: 22px;
-            color: #888;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            animation: colorShift 4s infinite;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(3px);
-            z-index: 999;
-            display: none;
-        }
-        .overlay.active {
-            display: block;
-        }
+    .syndicate-shell {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 80% 4%, rgba(126, 124, 44, 0.12), transparent 24rem),
+        radial-gradient(circle at 8% 58%, rgba(228, 160, 119, 0.07), transparent 26rem),
+        var(--ink);
+    }
 
-        .hero {
-            animation: bgGlow 8s infinite, borderGlow 8s infinite;
-            border: 1px solid #222;
-            border-radius: 12px;
-            padding: 30px 20px;
-            margin-bottom: 20px;
-        }
-        .hero-tag {
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            animation: colorShift 8s infinite;
-        }
-        .hero h1 {
-            font-size: 28px;
-            line-height: 1.2;
-            margin: 15px 0;
-            font-weight: 400;
-        }
-        .hero p {
-            color: #aaa;
-            font-size: 14px;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-        
-        /* Cyberpunk Animated Visual Box (Replaces broken image links) */
-        .visual-box {
-            width: 100%;
-            height: 180px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            border: 1px solid #333;
-            animation: borderGlow 8s infinite, bgGlow 4s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .visual-box::after {
-            content: "⚡ THE SYNDICATE CORE";
-            font-size: 14px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            animation: colorShift 6s infinite;
-        }
+    .site-width {
+      width: min(100% - 2rem, 1170px);
+      margin-inline: auto;
+    }
 
-        .btn-primary {
-            display: block;
-            width: 100%;
-            background-color: #d4ff00;
-            color: #000;
-            text-align: center;
-            padding: 14px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 12px;
-            animation: colorShiftBg 8s infinite;
-            transition: opacity 0.2s;
-        }
-        
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25d366;
-            color: #fff;
-            text-align: center;
-            padding: 12px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-top: 12px;
-            font-size: 14px;
-            transition: opacity 0.2s;
-        }
-        .btn-whatsapp:active {
-            opacity: 0.8;
-        }
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 10, 8, 0.84);
+      border-bottom: 1px solid rgba(142, 139, 103, 0.2);
+    }
 
-        @keyframes colorShiftBg {
-            0% { background-color: #d4ff00; }
-            33% { background-color: #00ffcc; }
-            66% { background-color: #bd00ff; color: #fff; }
-            100% { background-color: #d4ff00; }
-        }
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: 1px solid var(--line-soft);
+      border-radius: 0.4rem;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
 
-        .card {
-            background-color: #141414;
-            animation: borderGlow 8s infinite;
-            border: 1px solid #222;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .card-tag {
-            font-size: 11px;
-            text-transform: uppercase;
-            animation: colorShift 8s infinite;
-        }
-        .card h3 {
-            font-size: 18px;
-            margin: 5px 0 10px 0;
-            color: #fff;
-        }
-        .card p {
-            color: #888;
-            font-size: 13px;
-            line-height: 1.4;
-        }
-        .leader-name {
-            font-size: 20px;
-            font-weight: bold;
-            animation: colorShift 8s infinite;
-            letter-spacing: 1px;
-            margin: 8px 0 3px 0;
-        }
-        
-        .form-section {
-            background-color: #121212;
-            animation: borderGlow 8s infinite;
-            border: 1px solid #222;
-            border-radius: 12px;
-            padding: 25px 20px;
-            margin-top: 30px;
-        }
-        .form-group {
-            margin-top: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 8px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #444;
-            color: #fff;
-            padding: 8px 0;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            border-bottom-color: #00ffcc;
-        }
-        footer {
-            text-align: center;
-            padding: 25px 20px;
-            color: #666;
-            font-size: 12px;
-            border-top: 1px solid #222;
-            margin-top: 40px;
-            letter-spacing: 1px;
-        }
-        .footer-brand {
-            animation: colorShift 8s infinite;
-        }
+    .wordmark {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.055em;
+    }
 
-        iframe[src*="netlify"], div[style*="z-index: 2147483647"], a[href*="netlify.com"] {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-        }
-    </style>
-</head>
-<body>
+    .nav-link {
+      color: #c1c0b2;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
 
-    <div class="overlay" id="overlay"></div>
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--peach);
+    }
 
-    <div class="nav-menu" id="navMenu">
-        <div class="nav-header">
-            <span style="color: #d4ff00; font-weight: bold; font-size: 14px;">NAVIGATION</span>
-            <button class="close-btn" id="closeBtn">✕</button>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="menu-link">Home</a></li>
-            <li><a href="https://discord.gg/syndicateps" target="_blank" class="menu-link">Join Discord ↗</a></li>
-            <li><a href="#join" class="menu-link">Apply for Membership</a></li>
-        </ul>
+    .menu-button,
+    .icon-link {
+      border: 1px solid var(--line-soft);
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .menu-button:hover,
+    .menu-button:focus-visible,
+    .icon-link:hover,
+    .icon-link:focus-visible {
+      border-color: var(--peach);
+      color: var(--peach);
+      background: rgba(228, 160, 119, 0.08);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: center;
+      min-height: 660px;
+      padding: clamp(4.5rem, 9vw, 8.25rem) 0;
+    }
+
+    .section-kicker {
+      color: var(--peach);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero-title,
+    .section-title {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.055em;
+      line-height: 0.96;
+    }
+
+    .hero-title {
+      max-width: 10ch;
+      margin: 1rem 0 1.35rem;
+      font-size: clamp(3.25rem, 7.1vw, 6.85rem);
+    }
+
+    .hero-copy {
+      max-width: 35rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .primary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 2rem;
+      border-radius: 999px;
+      padding: 0.95rem 1.35rem;
+      background: var(--peach);
+      color: #231811;
+      font-size: 0.89rem;
+      font-weight: 700;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .primary-action:hover,
+    .primary-action:focus-visible {
+      background: #f0b48d;
+      box-shadow: 0 0 0 5px rgba(228, 160, 119, 0.13);
+      transform: translateY(-2px);
+    }
+
+    .orbit-stage {
+      position: relative;
+      min-height: 390px;
+      isolation: isolate;
+      border: 1px solid var(--line-soft);
+      border-radius: 1.1rem;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 67% 32%, rgba(168, 238, 82, 0.16), transparent 1.25rem),
+        radial-gradient(circle at 54% 48%, rgba(228, 160, 119, 0.22), transparent 7rem),
+        linear-gradient(135deg, #15170d, #0c0d0b 62%);
+    }
+
+    .orbit-stage::before,
+    .orbit-stage::after {
+      position: absolute;
+      content: "";
+      border: 1px solid rgba(213, 204, 136, 0.28);
+      border-radius: 999px;
+    }
+
+    .orbit-stage::before {
+      width: 132%;
+      height: 44%;
+      left: -19%;
+      top: 29%;
+      transform: rotate(-28deg);
+    }
+
+    .orbit-stage::after {
+      width: 92%;
+      height: 29%;
+      left: 8%;
+      top: 40%;
+      transform: rotate(29deg);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+    }
+
+    .orb-main {
+      width: 132px;
+      height: 132px;
+      top: 31%;
+      left: 42%;
+      z-index: 2;
+      border: 1px solid rgba(244, 203, 162, 0.85);
+      box-shadow: 0 0 80px rgba(228, 160, 119, 0.38), inset 0 0 35px rgba(228, 160, 119, 0.25);
+      background: radial-gradient(circle at 35% 28%, #ffd7b9, #d8835e 35%, #402618 76%);
+    }
+
+    .orb-small {
+      width: 17px;
+      height: 17px;
+      z-index: 3;
+      background: var(--lime);
+      box-shadow: 0 0 24px rgba(168, 238, 82, 0.8);
+    }
+
+    .orb-one { top: 17%; left: 65%; }
+    .orb-two { bottom: 19%; left: 24%; width: 12px; height: 12px; background: var(--peach); }
+    .orb-three { bottom: 12%; right: 13%; width: 8px; height: 8px; background: #dfd1a4; }
+
+    .orbit-label {
+      position: absolute;
+      z-index: 4;
+      right: 1.1rem;
+      bottom: 1.05rem;
+      color: #b9b7a5;
+      font-size: 0.63rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-wrap {
+      padding: clamp(4.8rem, 9vw, 8rem) 0;
+    }
+
+    .room-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+      gap: 2rem;
+      border: 1px solid var(--line-soft);
+      border-radius: 1.15rem;
+      padding: clamp(1.5rem, 4vw, 3.4rem);
+      background:
+        linear-gradient(115deg, rgba(228, 160, 119, 0.06), transparent 42%),
+        var(--panel);
+    }
+
+    .section-title {
+      margin: 0.85rem 0 1.2rem;
+      font-size: clamp(2.35rem, 5vw, 4.5rem);
+    }
+
+    .room-copy,
+    .membership-copy {
+      max-width: 36rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .value-list {
+      display: grid;
+      gap: 0;
+      align-content: center;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .value-index {
+      color: var(--peach);
+      font-family: "Space Mono", monospace;
+      font-size: 0.67rem;
+    }
+
+    .leadership-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .leader-card {
+      position: relative;
+      display: flex;
+      min-height: 390px;
+      flex-direction: column;
+      border: 1px solid var(--line-soft);
+      border-radius: 1rem;
+      padding: 1.45rem;
+      overflow: hidden;
+      background: var(--panel-soft);
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .leader-card:hover {
+      border-color: rgba(168, 238, 82, 0.68);
+      transform: translateY(-4px);
+    }
+
+    .leader-card::after {
+      position: absolute;
+      width: 165px;
+      height: 165px;
+      right: -62px;
+      top: -62px;
+      content: "";
+      border: 1px solid rgba(168, 238, 82, 0.19);
+      border-radius: 999px;
+    }
+
+    .avatar-orbit {
+      display: grid;
+      width: 78px;
+      height: 78px;
+      place-items: center;
+      margin: 1.75rem 0 auto;
+      border: 1px solid rgba(168, 238, 82, 0.62);
+      border-radius: 999px;
+      color: var(--lime);
+      font-family: "Fraunces", serif;
+      font-size: 1.7rem;
+      background: radial-gradient(circle at 33% 28%, #384720, #171d0d 66%);
+      box-shadow: 0 0 36px rgba(168, 238, 82, 0.12);
+    }
+
+    .leadership-label {
+      color: var(--lime);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .leader-name {
+      margin: 1.15rem 0 0.25rem;
+      font-family: "Fraunces", serif;
+      font-size: 2rem;
+      letter-spacing: -0.045em;
+    }
+
+    .leader-role {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 1.4rem;
+      border-radius: 999px;
+      padding: 0.83rem 0.95rem;
+      background: #22c55e;
+      color: #07150b;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .whatsapp-link:hover,
+    .whatsapp-link:focus-visible {
+      background: #70e981;
+      transform: translateY(-2px);
+    }
+
+    .membership-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: clamp(2rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    .application-form,
+    .success-card {
+      border: 1px solid var(--line-soft);
+      border-radius: 1rem;
+      padding: clamp(1.3rem, 3vw, 2rem);
+      background: var(--panel);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 0.48rem;
+    }
+
+    .field-group.full-span {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #d5d4c8;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #424236;
+      border-radius: 0.55rem;
+      outline: none;
+      padding: 0.82rem 0.9rem;
+      color: var(--cream);
+      font: inherit;
+      background: #0b0c09;
+      transition: border-color 170ms ease, box-shadow 170ms ease;
+    }
+
+    textarea {
+      min-height: 126px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #777669;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--peach);
+      box-shadow: 0 0 0 3px rgba(228, 160, 119, 0.13);
+    }
+
+    .form-error {
+      min-height: 1.1rem;
+      margin: 0.25rem 0 0;
+      color: #ffad8e;
+      font-size: 0.78rem;
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 1.25rem;
+      border-radius: 0.6rem;
+      padding: 0.95rem;
+      background: var(--peach);
+      color: #241912;
+      font-weight: 700;
+      transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
+    }
+
+    .submit-button:hover:not(:disabled),
+    .submit-button:focus-visible:not(:disabled) {
+      background: #f0b48d;
+      transform: translateY(-2px);
+    }
+
+    .submit-button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    .success-icon {
+      display: grid;
+      width: 3rem;
+      height: 3rem;
+      place-items: center;
+      border-radius: 999px;
+      color: #122209;
+      background: var(--lime);
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.4rem;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      color: var(--cream);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .secondary-button:hover,
+    .secondary-button:focus-visible {
+      border-color: var(--lime);
+      background: rgba(168, 238, 82, 0.08);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 2rem 0 2.7rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .footer-note {
+      margin-top: 0.65rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .footer-link {
+      width: fit-content;
+      color: #bdbcae;
+      font-size: 0.78rem;
+      letter-spacing: 0.065em;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--peach);
+    }
+
+    .mobile-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease, border-color 260ms ease;
+      border-bottom: 1px solid transparent;
+      background: rgba(9, 10, 8, 0.98);
+    }
+
+    .mobile-panel.is-open {
+      max-height: 280px;
+      border-color: var(--line-soft);
+    }
+
+    .mobile-panel-inner {
+      display: grid;
+      gap: 0.7rem;
+      padding: 1.1rem 0 1.35rem;
+    }
+
+    .mobile-nav-link {
+      border: 1px solid var(--line-soft);
+      border-radius: 0.5rem;
+      padding: 0.8rem 0.9rem;
+      color: #d3d1c6;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link:focus-visible {
+      border-color: var(--peach);
+      color: var(--peach);
+    }
+
+    .reveal {
+      animation: rise-in 700ms both;
+    }
+
+    .reveal-delay {
+      animation: rise-in 700ms 130ms both;
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--peach);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .room-panel,
+      .membership-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        min-height: auto;
+        padding-top: 4rem;
+      }
+
+      .orbit-stage {
+        min-height: 315px;
+      }
+
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .leader-card {
+        min-height: 310px;
+      }
+
+      .avatar-orbit {
+        margin-top: 1.1rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-width {
+        width: min(100% - 1.3rem, 1170px);
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 16vw, 4.15rem);
+      }
+
+      .form-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field-group.full-span,
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .leadership-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/6c2ecc939521f244.data_sdk.js" type="text/javascript" integrity="sha512-gRx8s+XsZDN6mSIQu2sivLZysbV0WHhb5kXNUWlgVb5lCMU1foJYukyMEDPv8Tnoocb8iwqB4XdRrWc7oEGzIQ=="></script>
+  <script src="/_sdk/b443124ed7f67435.editing_sdk.js" type="text/javascript" integrity="sha512-oLX1dpTmN2mZumhKQc0okubrUJ8MqA6c5fM5NHln6+9t8KpYrcElyL7NOV7dV6pLkMWSzWZRFAI+WLGRVrl64A=="></script>
+  <script src="/_sdk/ab4336f91e694f96.resizing_sdk.js" type="text/javascript" integrity="sha512-cxmeUrBrNlwwLr+tEu/iwM5F3boeK4qDMoH3QjUPqJptkO5NkaDVhQvyIHIn+3EflI5/uubWzkSA78B1tCswgA=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(9, 10, 8);">
+  <div class="syndicate-shell">
+   <header class="top-header">
+    <div class="site-width">
+     <div class="flex items-center justify-between gap-4 py-4"><a href="#top" class="shrink-0" aria-label="The Syndicate home"> <span data-template-id="brand-wordmark" class="canva-text wordmark text-[1.45rem] leading-none" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">THE SYNDICATE</span> </a>
+      <div data-template-id="welcome-badge" class="canva-banner eyebrow-badge hidden md:inline-flex" style="background: rgba(228, 160, 119, 0.06); color: rgb(216, 179, 156); font-weight: 600; font-style: normal; font-size: 16px;">⚡ WELCOME TO THE FUTURE WAVE</div>
+      <nav class="hidden items-center gap-7 md:flex" aria-label="Primary navigation"><a data-template-id="nav-room" class="canva-link nav-link" href="#room" style="color: rgb(193, 192, 178); font-weight: 600; font-style: normal; font-size: 16px;">The Room</a> <a data-template-id="nav-leadership" class="canva-link nav-link" href="#leadership" style="color: rgb(193, 192, 178); font-weight: 600; font-style: normal; font-size: 16px;">Leadership</a> <a data-template-id="nav-membership" class="canva-link nav-link" href="#membership" style="color: rgb(193, 192, 178); font-weight: 600; font-style: normal; font-size: 16px;">Membership</a>
+      </nav><button id="menu-toggle" class="menu-button inline-grid h-10 w-10 place-items-center rounded-full md:hidden" type="button" aria-expanded="false" aria-controls="mobile-navigation"> <span class="sr-only">Open navigation menu</span> <i data-lucide="menu" aria-hidden="true" class="h-5 w-5"></i> </button>
+     </div>
     </div>
-
-    <div class="welcome-banner">
-        <h2>⚡ Welcome to the Future Wave</h2>
+    <div id="mobile-navigation" class="mobile-panel md:hidden" aria-hidden="true">
+     <nav class="site-width mobile-panel-inner" aria-label="Mobile navigation">
+      <div data-template-id="mobile-welcome-badge" class="canva-banner eyebrow-badge mb-1 w-fit" style="background: rgba(228, 160, 119, 0.06); color: rgb(216, 179, 156); font-weight: 600; font-style: normal; font-size: 16px;">⚡ WELCOME TO THE FUTURE WAVE</div><a data-template-id="mobile-nav-room" class="canva-link mobile-nav-link" href="#room" style="color: rgb(211, 209, 198); font-weight: 600; font-style: normal; font-size: 16px;">The Room</a> <a data-template-id="mobile-nav-leadership" class="canva-link mobile-nav-link" href="#leadership" style="color: rgb(211, 209, 198); font-weight: 600; font-style: normal; font-size: 16px;">Leadership</a> <a data-template-id="mobile-nav-membership" class="canva-link mobile-nav-link" href="#membership" style="color: rgb(211, 209, 198); font-weight: 600; font-style: normal; font-size: 16px;">Membership</a>
+     </nav>
     </div>
-
-    <header>
-        <div class="logo">● THE SYNDICATE</div>
-        <div class="menu-icon" id="menuBtn">☰</div>
-    </header>
-
-    <section class="hero">
-        <span class="hero-tag">A Collective for the Next Wave</span>
-        <h1>Move with people who move the world.</h1>
-        <p>The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p>
-        
-        <!-- Cyberpunk Animated Visual Box -->
-        <div class="visual-box"></div>
-
-        <a href="https://discord.gg/syndicateps" target="_blank" class="btn-primary">Join Discord Community ↗</a>
+   </header>
+   <main id="top">
+    <section class="site-width hero-grid" aria-labelledby="hero-title">
+     <div class="reveal">
+      <p data-template-id="hero-eyebrow" class="canva-text section-kicker" style="color: rgb(228, 160, 119); font-weight: 600; font-style: normal; font-size: 16px;">A COLLECTIVE FOR THE NEXT WAVE</p>
+      <h1 id="hero-title" data-template-id="hero-title" class="canva-text hero-title" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 32px;">Move with people who move the world.</h1>
+      <p data-template-id="hero-copy" class="canva-text hero-copy" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.7;">The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p><a data-template-id="discord-cta" class="canva-button primary-action" href="https://discord.com/" target="_blank" rel="noopener noreferrer" style="background: rgb(228, 160, 119); color: rgb(35, 24, 17);"> <span data-template-id="discord-cta-label" class="canva-text" style="color: rgb(35, 24, 17); font-weight: 700; font-style: normal; font-size: 16px;">Join Discord Community</span> <i data-lucide="arrow-up-right" aria-hidden="true" class="h-4 w-4"></i> </a>
+     </div>
+     <div class="orbit-stage reveal-delay" aria-hidden="true"><span class="orb orb-main"></span> <span class="orb orb-small orb-one"></span> <span class="orb orb-small orb-two"></span> <span class="orb orb-small orb-three"></span> <span data-template-id="orbit-label" class="canva-text orbit-label" style="color: rgb(185, 183, 165); font-weight: 500; font-style: normal; font-size: 16px;">signal / momentum / orbit</span>
+     </div>
     </section>
-
-    <div class="card">
-        <span class="card-tag">The Room</span>
-        <h3>A private network with a bias toward possibility.</h3>
-        <p>For people building what comes next. Ideas become movements. Private network, public impact.</p>
+    <section id="room" class="site-width section-wrap scroll-mt-28" aria-labelledby="room-title">
+     <div data-template-id="room-panel" class="canva-panel room-panel" style="background: rgb(17, 18, 14);">
+      <div>
+       <p data-template-id="room-eyebrow" class="canva-text section-kicker" style="color: rgb(228, 160, 119); font-weight: 600; font-style: normal; font-size: 16px;">THE ROOM</p>
+       <h2 id="room-title" data-template-id="room-title" class="canva-text section-title" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 24px;">A private network with a bias toward possibility.</h2>
+       <p data-template-id="room-copy" class="canva-text room-copy" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 17px; line-height: 1.7;">For ambitious people building what comes next. Ideas become sharper when they meet the right collaborators, conversations, and moments of action.</p>
+      </div>
+      <div class="value-list" aria-label="The room benefits">
+       <div class="value-item"><span class="value-index">01</span>
+        <p data-template-id="value-one" class="canva-text m-0 text-right font-semibold text-[1.05rem]" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">Curated people</p>
+       </div>
+       <div class="value-item"><span class="value-index">02</span>
+        <p data-template-id="value-two" class="canva-text m-0 text-right font-semibold text-[1.05rem]" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">High-signal conversations</p>
+       </div>
+       <div class="value-item"><span class="value-index">03</span>
+        <p data-template-id="value-three" class="canva-text m-0 text-right font-semibold text-[1.05rem]" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">Real-world momentum</p>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="leadership" class="site-width section-wrap scroll-mt-24" aria-labelledby="leadership-title">
+     <div class="leadership-head">
+      <div>
+       <p data-template-id="leadership-eyebrow" class="canva-text section-kicker" style="color: rgb(168, 238, 82); font-weight: 600; font-style: normal; font-size: 16px;">LEADERSHIP</p>
+       <h2 id="leadership-title" data-template-id="leadership-title" class="canva-text section-title mb-0" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 24px;">Meet the people holding the room.</h2>
+      </div>
+      <p data-template-id="leadership-intro" class="canva-text max-w-sm text-sm leading-6 text-[#a5a496]" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 15px; line-height: 1.6;">A small operating team connecting the right people to the right next move.</p>
+     </div>
+     <div class="leadership-grid">
+      <article data-template-id="leader-ayaz-card" class="canva-card leader-card" style="background: rgb(21, 23, 16);">
+       <p data-template-id="leader-ayaz-label" class="canva-text leadership-label m-0" style="color: rgb(168, 238, 82); font-weight: 700; font-style: normal; font-size: 16px;">Leadership</p>
+       <div aria-hidden="true" class="avatar-orbit">
+        A
+       </div>
+       <h3 data-template-id="leader-ayaz-name" class="canva-text leader-name" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 19px;">Ayaz</h3>
+       <p data-template-id="leader-ayaz-role" class="canva-text leader-role m-0" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 14px;">Visionary &amp; Lead</p><a data-template-id="leader-ayaz-whatsapp" class="canva-button whatsapp-link" href="https://wa.me/923112345043" target="_blank" rel="noopener noreferrer" aria-label="Message Ayaz on WhatsApp" style="background: rgb(34, 197, 94); color: rgb(7, 21, 11);"> <i data-lucide="message-circle" aria-hidden="true" class="h-4 w-4"></i> <span data-template-id="leader-ayaz-whatsapp-label" class="canva-text" style="color: rgb(7, 21, 11); font-weight: 700; font-style: normal; font-size: 16px;">WhatsApp (+92 311 2345043) ↗</span> </a>
+      </article>
+      <article data-template-id="leader-paryaz-card" class="canva-card leader-card" style="background: rgb(21, 23, 16);">
+       <p data-template-id="leader-paryaz-label" class="canva-text leadership-label m-0" style="color: rgb(168, 238, 82); font-weight: 700; font-style: normal; font-size: 16px;">Leadership</p>
+       <div aria-hidden="true" class="avatar-orbit">
+        P
+       </div>
+       <h3 data-template-id="leader-paryaz-name" class="canva-text leader-name" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 19px;">Paryaz</h3>
+       <p data-template-id="leader-paryaz-role" class="canva-text leader-role m-0" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 14px;">Co-founder &amp; Operations</p><a data-template-id="leader-paryaz-whatsapp" class="canva-button whatsapp-link" href="https://wa.me/375444447444" target="_blank" rel="noopener noreferrer" aria-label="Message Paryaz on WhatsApp" style="background: rgb(34, 197, 94); color: rgb(7, 21, 11);"> <i data-lucide="message-circle" aria-hidden="true" class="h-4 w-4"></i> <span data-template-id="leader-paryaz-whatsapp-label" class="canva-text" style="color: rgb(7, 21, 11); font-weight: 700; font-style: normal; font-size: 16px;">WhatsApp (+375 44 444 7444) ↗</span> </a>
+      </article>
+      <article data-template-id="leader-ahsan-card" class="canva-card leader-card" style="background: rgb(21, 23, 16);">
+       <p data-template-id="leader-ahsan-label" class="canva-text leadership-label m-0" style="color: rgb(168, 238, 82); font-weight: 700; font-style: normal; font-size: 16px;">Leadership</p>
+       <div aria-hidden="true" class="avatar-orbit">
+        A
+       </div>
+       <h3 data-template-id="leader-ahsan-name" class="canva-text leader-name" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 19px;">Ahsan</h3>
+       <p data-template-id="leader-ahsan-role" class="canva-text leader-role m-0" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 14px;">Co-founder &amp; Strategy</p><a data-template-id="leader-ahsan-whatsapp" class="canva-button whatsapp-link" href="https://wa.me/447878755999" target="_blank" rel="noopener noreferrer" aria-label="Message Ahsan on WhatsApp" style="background: rgb(34, 197, 94); color: rgb(7, 21, 11);"> <i data-lucide="message-circle" aria-hidden="true" class="h-4 w-4"></i> <span data-template-id="leader-ahsan-whatsapp-label" class="canva-text" style="color: rgb(7, 21, 11); font-weight: 700; font-style: normal; font-size: 16px;">WhatsApp (+44 7878 755999) ↗</span> </a>
+      </article>
+     </div>
+    </section>
+    <section id="membership" class="site-width section-wrap scroll-mt-24" aria-labelledby="membership-title">
+     <div class="membership-layout">
+      <div>
+       <p data-template-id="membership-eyebrow" class="canva-text section-kicker" style="color: rgb(228, 160, 119); font-weight: 600; font-style: normal; font-size: 16px;">MEMBERSHIP</p>
+       <h2 id="membership-title" data-template-id="membership-title" class="canva-text section-title" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 24px;">Apply for membership.</h2>
+       <p data-template-id="membership-copy" class="canva-text membership-copy" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 17px; line-height: 1.7;">Tell us what you are building, exploring, or moving toward. We are looking for thoughtful people who bring energy, curiosity, and a point of view.</p>
+      </div>
+      <div>
+       <form id="membership-form" class="application-form" novalidate="">
+        <div class="form-grid">
+         <div class="field-group"><label data-template-id="name-label" class="canva-text" for="applicant-name" style="color: rgb(213, 212, 200); font-weight: 600; font-style: normal; font-size: 16px;">Your name</label> <input id="applicant-name" name="name" type="text" autocomplete="name" required="">
+         </div>
+         <div class="field-group"><label data-template-id="email-label" class="canva-text" for="applicant-email" style="color: rgb(213, 212, 200); font-weight: 600; font-style: normal; font-size: 16px;">Email address</label> <input id="applicant-email" name="email" type="email" autocomplete="email" required="">
+         </div>
+         <div class="field-group full-span"><label data-template-id="role-label" class="canva-text" for="applicant-role" style="color: rgb(213, 212, 200); font-weight: 600; font-style: normal; font-size: 16px;">Role or field</label> <input id="applicant-role" name="role" type="text" required="">
+         </div>
+         <div class="field-group full-span"><label data-template-id="statement-label" class="canva-text" for="applicant-statement" style="color: rgb(213, 212, 200); font-weight: 600; font-style: normal; font-size: 16px;">Why do you belong in the room?</label> <textarea id="applicant-statement" name="statement" required=""></textarea>
+         </div>
+        </div>
+        <p id="form-error" class="form-error" role="alert" aria-live="polite"></p><button id="submit-application" data-template-id="submit-application" class="canva-button submit-button" type="submit" style="background: rgb(228, 160, 119); color: rgb(36, 25, 18);"> <i data-lucide="send" aria-hidden="true" class="h-4 w-4"></i> <span data-template-id="submit-application-label" class="canva-text" style="color: rgb(36, 25, 18); font-weight: 700; font-style: normal; font-size: 16px;">Submit application</span> </button>
+       </form>
+       <div id="application-success" class="success-card hidden" tabindex="-1" aria-live="polite">
+        <div class="success-icon"><i data-lucide="check" aria-hidden="true" class="h-6 w-6"></i>
+        </div>
+        <h3 data-template-id="success-title" class="canva-text mt-5 font-['Fraunces'] text-3xl tracking-tight" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 19px;">Your signal is in.</h3>
+        <p data-template-id="success-copy" class="canva-text mt-2 max-w-md leading-7 text-[#a5a496]" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">Thank you for applying. Your membership application has been received and the Syndicate team will review it.</p><button id="reset-application" data-template-id="reset-application" class="canva-button secondary-button" type="button" style="background: rgb(21, 23, 16); color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">Submit another application</button>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer class="site-footer">
+    <div class="site-width footer-grid">
+     <div class="footer-brand">
+      <p data-template-id="footer-wordmark" class="canva-text wordmark m-0 text-2xl" style="color: rgb(242, 240, 232); font-weight: 600; font-style: normal; font-size: 16px;">THE SYNDICATE</p>
+      <p data-template-id="footer-line" class="canva-text footer-note" style="color: rgb(165, 164, 150); font-weight: 400; font-style: normal; font-size: 14px;">Move with people who move the world.</p>
+     </div>
+     <nav class="footer-links" aria-label="Footer navigation"><a data-template-id="footer-room" class="canva-link footer-link" href="#room" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">The Room</a> <a data-template-id="footer-leadership" class="canva-link footer-link" href="#leadership" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">Leadership</a> <a data-template-id="footer-membership" class="canva-link footer-link" href="#membership" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">Membership</a>
+     </nav>
+     <div class="footer-links"><a data-template-id="footer-discord" class="canva-link footer-link" href="https://discord.com/" target="_blank" rel="noopener noreferrer" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">Discord ↗</a> <a data-template-id="footer-whatsapp" class="canva-link footer-link" href="https://wa.me/923112345043" target="_blank" rel="noopener noreferrer" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">WhatsApp ↗</a> <a data-template-id="footer-email" class="canva-link footer-link" href="mailto:hello@thesyndicate.community" style="color: rgb(189, 188, 174); font-weight: 600; font-style: normal; font-size: 16px;">Email ↗</a>
+     </div>
     </div>
+   </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
 
-    <!-- Leadership Section -->
-    <div class="card" style="text-align: center;">
-        <span class="card-tag">Leadership</span>
-        <h3>Syndicate Founder</h3>
-        <div class="leader-name">Ayaz</div>
-        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Visionary & Lead</p>
-        <a href="https://wa.me/923112345043" target="_blank" class="btn-whatsapp">
-            💬 WhatsApp (+92 311 2345043) ↗
-        </a>
-    </div>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileNavigation = document.getElementById("mobile-navigation");
 
-    <div class="card" style="text-align: center;">
-        <span class="card-tag">Leadership</span>
-        <h3>Syndicate Co-Founder</h3>
-        <div class="leader-name">Parvaiz</div>
-        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Co-Founder & Operations</p>
-        <a href="https://wa.me/375444447444" target="_blank" class="btn-whatsapp">
-            💬 WhatsApp (+375 44 444 7444) ↗
-        </a>
-    </div>
+      function setMenu(open) {
+        mobileNavigation.classList.toggle("is-open", open);
+        mobileNavigation.setAttribute("aria-hidden", String(!open));
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.querySelector(".sr-only").textContent = open ? "Close navigation menu" : "Open navigation menu";
+      }
 
-    <div class="card" style="text-align: center;">
-        <span class="card-tag">Leadership</span>
-        <h3>Syndicate Co-Founder</h3>
-        <div class="leader-name">Ahsan</div>
-        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Co-Founder & Strategy</p>
-        <a href="https://wa.me/447878785599" target="_blank" class="btn-whatsapp">
-            💬 WhatsApp (+44 7878 785599) ↗
-        </a>
-    </div>
+      menuToggle.addEventListener("click", () => {
+        setMenu(!mobileNavigation.classList.contains("is-open"));
+      });
 
-    <div class="form-section" id="join">
-        <h2>Apply for membership.</h2>
-        <p style="color: #888; font-size: 13px; margin-bottom: 15px;">Tell us about yourself and what you are building.</p>
-        
-        <form action="https://formsubmit.co/pakyji24@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            
-            <div class="form-group">
-                <label>Your name</label>
-                <input type="text" name="name" placeholder="Enter your full name" required>
-            </div>
+      mobileNavigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenu(false));
+      });
 
-            <div class="form-group">
-                <label>Email address</label>
-                <input type="email" name="email" placeholder="you@example.com" required>
-            </div>
+      const form = document.getElementById("membership-form");
+      const successPanel = document.getElementById("application-success");
+      const resetButton = document.getElementById("reset-application");
+      const submitButton = document.getElementById("submit-application");
+      const errorMessage = document.getElementById("form-error");
 
-            <div class="form-group">
-                <label>What are you building?</label>
-                <textarea name="message" rows="3" placeholder="A company, community..." required></textarea>
-            </div>
+      let dataReady = false;
 
-            <button type="submit" class="btn-primary" style="margin-top: 25px; border: none; cursor: pointer;">Submit Application</button>
-        </form>
-    </div>
+      const handler = {
+        onDataChanged() {
+          dataReady = true;
+        }
+      };
 
-    <footer>
-        <p>POWERED BY <span class="footer-brand">THE SYNDICATE</span></p>
-    </footer>
+      async function initializeStorage() {
+        const result = await window.dataSdk.init(handler);
+        if (!result.isOk) {
+          errorMessage.textContent = "Applications are temporarily unavailable. Please try again shortly.";
+          submitButton.disabled = true;
+        } else {
+          dataReady = true;
+        }
+      }
 
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const closeBtn = document.getElementById('closeBtn');
-        const navMenu = document.getElementById('navMenu');
-        const overlay = document.getElementById('overlay');
-        const menuLinks = document.querySelectorAll('.menu-link');
+      initializeStorage();
 
-        function toggleMenu() {
-            navMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
+      function validateApplication(values) {
+        if (!values.name || !values.email || !values.role || !values.statement) {
+          return "Please complete all fields before submitting your application.";
         }
 
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(values.email)) {
+          return "Please enter a valid email address.";
+        }
 
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
+        if (values.statement.length < 20) {
+          return "Tell us a little more in your statement (at least 20 characters).";
+        }
+
+        return "";
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        errorMessage.textContent = "";
+
+        const formData = new FormData(form);
+        const values = {
+          name: String(formData.get("name") || "").trim(),
+          email: String(formData.get("email") || "").trim(),
+          role: String(formData.get("role") || "").trim(),
+          statement: String(formData.get("statement") || "").trim()
+        };
+
+        const validationError = validateApplication(values);
+        if (validationError) {
+          errorMessage.textContent = validationError;
+          return;
+        }
+
+        if (!dataReady) {
+          errorMessage.textContent = "Preparing applications. Please try again in a moment.";
+          return;
+        }
+
+        submitButton.disabled = true;
+        const buttonLabel = submitButton.querySelector("[data-template-id='submit-application-label']");
+        const originalLabel = buttonLabel.textContent;
+        buttonLabel.textContent = "Sending application…";
+
+        const result = await window.dataSdk.create({
+          ...values,
+          submitted_at: new Date().toISOString()
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('a, div, iframe');
-            elements.forEach(el => {
-                if (el.href && el.href.includes('netlify.com')) {
-                    el.style.display = 'none';
-                }
-            });
-        });
-    </script>
+        submitButton.disabled = false;
+        buttonLabel.textContent = originalLabel;
 
-</body>
-</html>
+        if (!result.isOk) {
+          errorMessage.textContent = "We couldn't send your application just now. Please try again.";
+          return;
+        }
+
+        form.classList.add("hidden");
+        successPanel.classList.remove("hidden");
+        successPanel.focus();
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        errorMessage.textContent = "";
+        successPanel.classList.add("hidden");
+        form.classList.remove("hidden");
+        document.getElementById("applicant-name").focus();
+      });
+    });
+  </script>
+ 
+</body></html>
