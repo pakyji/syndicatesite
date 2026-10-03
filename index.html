@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Syndicate</title>
     <style>
-        /* Professional color shifting variables */
         @keyframes colorShift {
-            0% { color: #d4ff00; }   /* Neon Green */
-            33% { color: #00ffcc; }  /* Cyber Cyan */
-            66% { color: #bd00ff; }  /* Electric Purple */
-            100% { color: #d4ff00; } /* Back to Neon Green */
+            0% { color: #d4ff00; }
+            33% { color: #00ffcc; }
+            66% { color: #bd00ff; }
+            100% { color: #d4ff00; }
         }
 
         @keyframes borderGlow {
@@ -21,10 +20,10 @@
         }
 
         @keyframes bgGlow {
-            0% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.05) 0%, #000 100%); }
-            33% { background: linear-gradient(135deg, rgba(0, 255, 204, 0.05) 0%, #000 100%); }
-            66% { background: linear-gradient(135deg, rgba(189, 0, 255, 0.05) 0%, #000 100%); }
-            100% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.05) 0%, #000 100%); }
+            0% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.08) 0%, #000 100%); }
+            33% { background: linear-gradient(135deg, rgba(0, 255, 204, 0.08) 0%, #000 100%); }
+            66% { background: linear-gradient(135deg, rgba(189, 0, 255, 0.08) 0%, #000 100%); }
+            100% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.08) 0%, #000 100%); }
         }
 
         * {
@@ -39,7 +38,6 @@
             padding: 20px;
         }
 
-        /* Top Professional Welcome Message */
         .welcome-banner {
             text-align: center;
             padding: 12px 15px;
@@ -83,11 +81,7 @@
             animation: borderGlow 8s infinite;
             transition: 0.2s;
         }
-        .menu-icon:active {
-            background: #222;
-        }
         
-        /* Sliding Mobile Menu Overlay */
         .nav-menu {
             position: fixed;
             top: 0;
@@ -178,30 +172,26 @@
             line-height: 1.5;
         }
         
-        /* Image Slider / Gallery Section */
-        .slider-container {
+        /* Cyberpunk Animated Visual Box (Replaces broken image links) */
+        .visual-box {
             width: 100%;
-            height: 220px;
+            height: 180px;
             border-radius: 10px;
-            overflow: hidden;
             margin-bottom: 25px;
             border: 1px solid #333;
-            animation: borderGlow 8s infinite;
+            animation: borderGlow 8s infinite, bgGlow 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            overflow: hidden;
         }
-        .slider-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .slider-container img.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
+        .visual-box::after {
+            content: "⚡ THE SYNDICATE CORE";
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            animation: colorShift 6s infinite;
         }
 
         .btn-primary {
@@ -319,7 +309,6 @@
             animation: colorShift 8s infinite;
         }
 
-        /* Netlify badge hiding */
         iframe[src*="netlify"], div[style*="z-index: 2147483647"], a[href*="netlify.com"] {
             display: none !important;
             opacity: 0 !important;
@@ -344,7 +333,6 @@
         </ul>
     </div>
 
-    <!-- Top Professional Welcome Message -->
     <div class="welcome-banner">
         <h2>⚡ Welcome to the Future Wave</h2>
     </div>
@@ -359,14 +347,8 @@
         <h1>Move with people who move the world.</h1>
         <p>The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p>
         
-        <!-- Automatic Image Slideshow using your 5 links -->
-        <div class="slider-container" id="imageSlider">
-            <img src="https://kommodo.ai/i/KV1Sya2E116JUD9mVWcM" class="active" alt="Syndicate Asset 1">
-            <img src="https://kommodo.ai/i/C0zryPCPGjsW4qfCTOwM" alt="Syndicate Asset 2">
-            <img src="https://kommodo.ai/i/o9vH9VOdCIqh9jhJAY20" alt="Syndicate Asset 3">
-            <img src="https://kommodo.ai/i/YABz4EeDTmxzB4I3cecI" alt="Syndicate Asset 4">
-            <img src="https://kommodo.ai/i/Ugrg7s9tKly8fYOPsPZx" alt="Syndicate Asset 5">
-        </div>
+        <!-- Cyberpunk Animated Visual Box -->
+        <div class="visual-box"></div>
 
         <a href="https://discord.gg/syndicateps" target="_blank" class="btn-primary">Join Discord Community ↗</a>
     </section>
@@ -377,7 +359,7 @@
         <p>For people building what comes next. Ideas become movements. Private network, public impact.</p>
     </div>
 
-    <!-- Leadership Section: Founder & Co-Founders -->
+    <!-- Leadership Section -->
     <div class="card" style="text-align: center;">
         <span class="card-tag">Leadership</span>
         <h3>Syndicate Founder</h3>
@@ -439,7 +421,6 @@
     </footer>
 
     <script>
-        // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const navMenu = document.getElementById('navMenu');
@@ -462,20 +443,6 @@
             });
         });
 
-        // Automatic Image Slideshow logic
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('#imageSlider img');
-        
-        function nextSlide() {
-            images[currentImageIndex].classList.remove('active');
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            images[currentImageIndex].classList.add('active');
-        }
-        
-        // Change image every 3.5 seconds automatically
-        setInterval(nextSlide, 3500);
-
-        // Hide Netlify branding
         window.addEventListener('DOMContentLoaded', () => {
             const elements = document.querySelectorAll('a, div, iframe');
             elements.forEach(el => {
