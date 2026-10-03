@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Syndicate</title>
     <style>
+        /* Professional color shifting variables */
+        @keyframes colorShift {
+            0% { color: #d4ff00; }   /* Neon Green */
+            33% { color: #00ffcc; }  /* Cyber Cyan */
+            66% { color: #bd00ff; }  /* Electric Purple */
+            100% { color: #d4ff00; } /* Back to Neon Green */
+        }
+
+        @keyframes borderGlow {
+            0% { border-color: rgba(212, 255, 0, 0.4); }
+            33% { border-color: rgba(0, 255, 204, 0.4); }
+            66% { border-color: rgba(189, 0, 255, 0.4); }
+            100% { border-color: rgba(212, 255, 0, 0.4); }
+        }
+
+        @keyframes bgGlow {
+            0% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.05) 0%, #000 100%); }
+            33% { background: linear-gradient(135deg, rgba(0, 255, 204, 0.05) 0%, #000 100%); }
+            66% { background: linear-gradient(135deg, rgba(189, 0, 255, 0.05) 0%, #000 100%); }
+            100% { background: linear-gradient(135deg, rgba(212, 255, 0, 0.05) 0%, #000 100%); }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,6 +38,25 @@
             color: #ffffff;
             padding: 20px;
         }
+
+        /* Top Welcome Banner Styling */
+        .welcome-banner {
+            text-align: center;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #222;
+            border-radius: 10px;
+            animation: borderGlow 8s infinite;
+        }
+        .welcome-banner h2 {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: colorShift 8s infinite;
+        }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -29,7 +70,7 @@
             font-size: 14px;
             letter-spacing: 1px;
             font-weight: bold;
-            color: #d4ff00;
+            animation: colorShift 8s infinite;
         }
         .menu-icon {
             font-size: 18px;
@@ -39,6 +80,7 @@
             cursor: pointer;
             background: #141414;
             color: #fff;
+            animation: borderGlow 8s infinite;
             transition: 0.2s;
         }
         .menu-icon:active {
@@ -92,10 +134,9 @@
             transition: color 0.2s;
         }
         .nav-links a:hover {
-            color: #d4ff00;
+            animation: colorShift 4s infinite;
         }
         
-        /* Backdrop blur when menu is open */
         .overlay {
             position: fixed;
             top: 0;
@@ -112,16 +153,22 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #111 0%, #000 100%);
+            animation: bgGlow 8s infinite, borderGlow 8s infinite;
             border: 1px solid #222;
             border-radius: 12px;
             padding: 30px 20px;
             margin-bottom: 20px;
         }
+        .hero-tag {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: colorShift 8s infinite;
+        }
         .hero h1 {
             font-size: 28px;
             line-height: 1.2;
-            margin-bottom: 15px;
+            margin: 15px 0;
             font-weight: 400;
         }
         .hero p {
@@ -141,17 +188,51 @@
             font-weight: bold;
             text-decoration: none;
             margin-bottom: 12px;
+            animation: colorShiftBg 8s infinite;
+            transition: opacity 0.2s;
         }
+        
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background-color: #25d366;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 12px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .btn-whatsapp:active {
+            opacity: 0.8;
+        }
+
+        @keyframes colorShiftBg {
+            0% { background-color: #d4ff00; }
+            33% { background-color: #00ffcc; }
+            66% { background-color: #bd00ff; color: #fff; }
+            100% { background-color: #d4ff00; }
+        }
+
         .card {
             background-color: #141414;
+            animation: borderGlow 8s infinite;
             border: 1px solid #222;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
         }
+        .card-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            animation: colorShift 8s infinite;
+        }
         .card h3 {
             font-size: 18px;
-            margin-bottom: 10px;
+            margin: 5px 0 10px 0;
             color: #fff;
         }
         .card p {
@@ -159,8 +240,17 @@
             font-size: 13px;
             line-height: 1.4;
         }
+        .leader-name {
+            font-size: 20px;
+            font-weight: bold;
+            animation: colorShift 8s infinite;
+            letter-spacing: 1px;
+            margin: 8px 0 3px 0;
+        }
+        
         .form-section {
             background-color: #121212;
+            animation: borderGlow 8s infinite;
             border: 1px solid #222;
             border-radius: 12px;
             padding: 25px 20px;
@@ -184,6 +274,10 @@
             padding: 8px 0;
             font-size: 15px;
             outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-bottom-color: #00ffcc;
         }
         footer {
             text-align: center;
@@ -193,6 +287,9 @@
             border-top: 1px solid #222;
             margin-top: 40px;
             letter-spacing: 1px;
+        }
+        .footer-brand {
+            animation: colorShift 8s infinite;
         }
 
         /* Netlify badge hiding */
@@ -206,10 +303,8 @@
 </head>
 <body>
 
-    <!-- Backdrop Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Sliding Menu Drawer -->
     <div class="nav-menu" id="navMenu">
         <div class="nav-header">
             <span style="color: #d4ff00; font-weight: bold; font-size: 14px;">NAVIGATION</span>
@@ -222,13 +317,18 @@
         </ul>
     </div>
 
+    <!-- Top Professional Welcome Message -->
+    <div class="welcome-banner">
+        <h2>⚡ Welcome to the Future Wave</h2>
+    </div>
+
     <header>
         <div class="logo">● THE SYNDICATE</div>
         <div class="menu-icon" id="menuBtn">☰</div>
     </header>
 
     <section class="hero">
-        <span style="font-size: 12px; color: #d4ff00; letter-spacing: 1px; text-transform: uppercase;">A Collective for the Next Wave</span>
+        <span class="hero-tag">A Collective for the Next Wave</span>
         <h1>Move with people who move the world.</h1>
         <p>The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p>
         
@@ -236,9 +336,40 @@
     </section>
 
     <div class="card">
-        <span style="color: #d4ff00; font-size: 11px; text-transform: uppercase;">The Room</span>
-        <h3 style="margin-top: 5px;">A private network with a bias toward possibility.</h3>
+        <span class="card-tag">The Room</span>
+        <h3>A private network with a bias toward possibility.</h3>
         <p>For people building what comes next. Ideas become movements. Private network, public impact.</p>
+    </div>
+
+    <!-- Leadership Section: Founder & Co-Founders -->
+    <div class="card" style="text-align: center;">
+        <span class="card-tag">Leadership</span>
+        <h3>Syndicate Founder</h3>
+        <div class="leader-name">Ayaz</div>
+        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Visionary & Lead</p>
+        <a href="https://wa.me/923112345043" target="_blank" class="btn-whatsapp">
+            💬 WhatsApp (+92 311 2345043) ↗
+        </a>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <span class="card-tag">Leadership</span>
+        <h3>Syndicate Co-Founder</h3>
+        <div class="leader-name">Parvaiz</div>
+        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Co-Founder & Operations</p>
+        <a href="https://wa.me/375444447444" target="_blank" class="btn-whatsapp">
+            💬 WhatsApp (+375 44 444 7444) ↗
+        </a>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <span class="card-tag">Leadership</span>
+        <h3>Syndicate Co-Founder</h3>
+        <div class="leader-name">Ahsan</div>
+        <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Co-Founder & Strategy</p>
+        <a href="https://wa.me/447878785599" target="_blank" class="btn-whatsapp">
+            💬 WhatsApp (+44 7878 785599) ↗
+        </a>
     </div>
 
     <div class="form-section" id="join">
@@ -268,10 +399,9 @@
     </div>
 
     <footer>
-        <p>POWERED BY <span style="color: #d4ff00;">THE SYNDICATE</span></p>
+        <p>POWERED BY <span class="footer-brand">THE SYNDICATE</span></p>
     </footer>
 
-    <!-- JavaScript for Menu toggle and Netlify badge remover -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
@@ -295,7 +425,6 @@
             });
         });
 
-        // Netlify badge remover script
         window.addEventListener('DOMContentLoaded', () => {
             const elements = document.querySelectorAll('a, div, iframe');
             elements.forEach(el => {
