@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Syndicate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #d4ff00;
+        }
+        .menu-icon {
+            font-size: 18px;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 50%;
+        }
+        .hero {
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .hero p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background-color: #d4ff00;
+            color: #000;
+            text-align: center;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+        .card {
+            background-color: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .card p {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .form-section {
+            background-color: #121212;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 25px 20px;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            color: #fff;
+            padding: 8px 0;
+            font-size: 15px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">● THE SYNDICATE</div>
+        <div class="menu-icon">☰</div>
+    </header>
+
+    <section class="hero">
+        <span style="font-size: 12px; color: #d4ff00; letter-spacing: 1px; text-transform: uppercase;">A Collective for the Next Wave</span>
+        <h1>Move with people who move the world.</h1>
+        <p>The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p>
+        
+        {/* Discord Join Button */}
+        <a href="https://discord.gg/syndicateps" target="_blank" class="btn-primary">Join Discord Community ↗</a>
+    </section>
+
+    <div class="card">
+        <span style="color: #d4ff00; font-size: 11px; text-transform: uppercase;">The Room</span>
+        <h3 style="margin-top: 5px;">A private network with a bias toward possibility.</h3>
+        <p>For people building what comes next. Ideas become movements. Private network, public impact.</p>
+    </div>
+
+    <div class="form-section" id="join">
+        <h2>Apply for membership.</h2>
+        <p style="color: #888; font-size: 13px; margin-bottom: 15px;">Tell us about yourself and what you are building.</p>
+        
+        <div class="form-group">
+            <label>Your name</label>
+            <input type="text" placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+            <label>What are you building?</label>
+            <textarea rows="3" placeholder="A company, community..."></textarea>
+        </div>
+
+        <button class="btn-primary" style="margin-top: 25px; border: none; cursor: pointer;">Submit Application</button>
+    </div>
+
+</body>                                               </html>
+                                                                       
