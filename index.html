@@ -177,6 +177,33 @@
             margin-bottom: 25px;
             line-height: 1.5;
         }
+        
+        /* Image Slider / Gallery Section */
+        .slider-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 1px solid #333;
+            animation: borderGlow 8s infinite;
+            position: relative;
+        }
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .slider-container img.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
         .btn-primary {
             display: block;
             width: 100%;
@@ -332,6 +359,15 @@
         <h1>Move with people who move the world.</h1>
         <p>The Syndicate connects ambitious minds, builders, creatives, and leaders in rooms where real momentum begins.</p>
         
+        <!-- Automatic Image Slideshow using your 5 links -->
+        <div class="slider-container" id="imageSlider">
+            <img src="https://kommodo.ai/i/KV1Sya2E116JUD9mVWcM" class="active" alt="Syndicate Asset 1">
+            <img src="https://kommodo.ai/i/C0zryPCPGjsW4qfCTOwM" alt="Syndicate Asset 2">
+            <img src="https://kommodo.ai/i/o9vH9VOdCIqh9jhJAY20" alt="Syndicate Asset 3">
+            <img src="https://kommodo.ai/i/YABz4EeDTmxzB4I3cecI" alt="Syndicate Asset 4">
+            <img src="https://kommodo.ai/i/Ugrg7s9tKly8fYOPsPZx" alt="Syndicate Asset 5">
+        </div>
+
         <a href="https://discord.gg/syndicateps" target="_blank" class="btn-primary">Join Discord Community ↗</a>
     </section>
 
@@ -403,6 +439,7 @@
     </footer>
 
     <script>
+        // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const navMenu = document.getElementById('navMenu');
@@ -425,6 +462,20 @@
             });
         });
 
+        // Automatic Image Slideshow logic
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('#imageSlider img');
+        
+        function nextSlide() {
+            images[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].classList.add('active');
+        }
+        
+        // Change image every 3.5 seconds automatically
+        setInterval(nextSlide, 3500);
+
+        // Hide Netlify branding
         window.addEventListener('DOMContentLoaded', () => {
             const elements = document.querySelectorAll('a, div, iframe');
             elements.forEach(el => {
@@ -436,4 +487,4 @@
     </script>
 
 </body>
-    </html>
+</html>
