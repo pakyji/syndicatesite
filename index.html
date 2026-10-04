@@ -1,1234 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>THE SYNDICATE | Community • Gaming • Technology</title>
-
-<meta name="description"
-content="THE SYNDICATE is a modern community built around gaming, technology, projects and people.">
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #05070a;
-    color: #f5f7fa;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font-family: inherit;
-}
-
-/* =========================
-   GLOBAL
-========================= */
-
-.container {
-    width: min(1180px, 92%);
-    margin: auto;
-}
-
-.section {
-    padding: 100px 0;
-}
-
-.section-label {
-    color: #4d8dff;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.section-title {
-    font-size: clamp(32px, 5vw, 54px);
-    font-weight: 800;
-    line-height: 1.05;
-}
-
-.section-text {
-    color: #8e98a8;
-    line-height: 1.7;
-    max-width: 600px;
-    margin-top: 18px;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    background: rgba(5, 7, 10, 0.78);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-
-.navbar {
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.logo-icon {
-    width: 35px;
-    height: 35px;
-    border: 2px solid #fff;
-    border-radius: 9px;
-    display: grid;
-    place-items: center;
-    font-weight: 900;
-    transform: rotate(45deg);
-}
-
-.logo-icon span {
-    transform: rotate(-45deg);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 27px;
-}
-
-.nav-links a {
-    color: #aeb6c3;
-    font-size: 13px;
-    transition: 0.25s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: white;
-}
-
-.discord-btn {
-    border: 1px solid #357cff;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 9px;
-    font-size: 13px;
-    transition: 0.25s;
-    background: rgba(53,124,255,0.08);
-}
-
-.discord-btn:hover {
-    background: #357cff;
-    box-shadow: 0 0 30px rgba(53,124,255,0.3);
-}
-
-.menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 26px;
-    cursor: pointer;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 75% 35%, rgba(35,90,180,0.22), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(20,70,160,0.12), transparent 30%),
-        #05070a;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 650px;
-    height: 650px;
-    right: -250px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: rgba(32,91,190,0.12);
-    filter: blur(100px);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding-top: 70px;
-}
-
-.hero-small {
-    color: #91a0b6;
-    letter-spacing: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(48px, 9vw, 105px);
-    line-height: 0.9;
-    letter-spacing: -4px;
-    font-weight: 900;
-    max-width: 900px;
-}
-
-.hero h1 span {
-    color: #4d8dff;
-}
-
-.hero-subtitle {
-    color: #9ba6b6;
-    max-width: 600px;
-    line-height: 1.7;
-    margin-top: 28px;
-    font-size: 17px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-    margin-top: 35px;
-    flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-secondary {
-    padding: 14px 23px;
-    border-radius: 9px;
-    font-size: 14px;
-    font-weight: 700;
-    transition: 0.25s;
-}
-
-.btn-primary {
-    background: #367cff;
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(54,124,255,0.3);
-}
-
-.btn-secondary {
-    border: 1px solid #303846;
-    color: #dce2ea;
-}
-
-.btn-secondary:hover {
-    border-color: #4d8dff;
-    background: rgba(77,141,255,0.08);
-}
-
-.hero-side {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    writing-mode: vertical-rl;
-    color: #687487;
-    letter-spacing: 5px;
-    font-size: 10px;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats {
-    border-top: 1px solid #1a2029;
-    border-bottom: 1px solid #1a2029;
-    background: #080b10;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.stat {
-    padding: 35px 25px;
-    border-right: 1px solid #1a2029;
-}
-
-.stat:last-child {
-    border-right: none;
-}
-
-.stat-number {
-    color: #fff;
-    font-size: 31px;
-    font-weight: 800;
-}
-
-.stat-name {
-    margin-top: 8px;
-    color: #8e98a8;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.offer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 50px;
-}
-
-.card {
-    position: relative;
-    min-height: 300px;
-    padding: 27px;
-    border: 1px solid #202731;
-    border-radius: 14px;
-    background:
-        linear-gradient(145deg, rgba(20,26,35,0.9), rgba(7,10,14,0.95));
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    right: -80px;
-    top: -80px;
-    background: #2369e8;
-    opacity: 0.07;
-    filter: blur(30px);
-    border-radius: 50%;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    border-color: #315d9f;
-}
-
-.card-icon {
-    width: 46px;
-    height: 46px;
-    border: 1px solid #293443;
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    color: #5d9aff;
-    font-size: 21px;
-    margin-bottom: 45px;
-}
-
-.card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: #7f8a9a;
-    line-height: 1.6;
-    font-size: 13px;
-}
-
-.card-link {
-    position: absolute;
-    bottom: 25px;
-    color: #70a5ff;
-    font-size: 12px;
-}
-
-/* =========================
-   FEATURE
-========================= */
-
-.feature {
-    background: #080b10;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 70px;
-    align-items: center;
-}
-
-.feature-box {
-    min-height: 390px;
-    border: 1px solid #202731;
-    border-radius: 18px;
-    background:
-        radial-gradient(circle at 70% 30%, rgba(45,105,220,0.2), transparent 30%),
-        #090d13;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.syndicate-symbol {
-    width: 150px;
-    height: 150px;
-    border: 4px solid #4d8dff;
-    transform: rotate(45deg);
-    border-radius: 25px;
-    box-shadow: 0 0 80px rgba(55,126,255,0.25);
-}
-
-.feature-list {
-    margin-top: 30px;
-    display: grid;
-    gap: 15px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 17px;
-    border: 1px solid #1e2630;
-    border-radius: 10px;
-    color: #c8d0dc;
-}
-
-.check {
-    color: #4d8dff;
-    font-weight: bold;
-}
-
-/* =========================
-   NEWS
-========================= */
-
-.news-grid {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
-}
-
-.news-card {
-    border: 1px solid #202731;
-    border-radius: 14px;
-    overflow: hidden;
-    background: #090d12;
-    transition: 0.3s;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-    border-color: #315d9f;
-}
-
-.news-image {
-    height: 170px;
-    background:
-        linear-gradient(135deg, #0e1624, #182d51 50%, #05070a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 42px;
-}
-
-.news-body {
-    padding: 22px;
-}
-
-.news-tag {
-    color: #4d8dff;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.news-card h3 {
-    margin-top: 12px;
-    font-size: 17px;
-}
-
-.news-date {
-    color: #657082;
-    font-size: 11px;
-    margin-top: 15px;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta {
-    padding: 100px 0;
-    text-align: center;
-}
-
-.cta-box {
-    padding: 80px 30px;
-    border: 1px solid #202b3b;
-    border-radius: 20px;
-    background:
-        radial-gradient(circle at center, rgba(42,102,210,0.15), transparent 45%),
-        #080b10;
-}
-
-.cta h2 {
-    font-size: clamp(34px, 6vw, 65px);
-}
-
-.cta p {
-    color: #818c9d;
-    max-width: 550px;
-    margin: 20px auto 30px;
-    line-height: 1.7;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    border-top: 1px solid #1a2029;
-    padding: 55px 0 25px;
-    background: #040609;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-}
-
-.footer-brand p {
-    color: #6f7988;
-    max-width: 300px;
-    margin-top: 17px;
-    line-height: 1.6;
-    font-size: 13px;
-}
-
-.footer-title {
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 17px;
-}
-
-.footer-links {
-    display: grid;
-    gap: 10px;
-}
-
-.footer-links a {
-    color: #707b8b;
-    font-size: 13px;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.copyright {
-    border-top: 1px solid #171d25;
-    margin-top: 45px;
-    padding-top: 22px;
-    color: #505a68;
-    font-size: 11px;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 900px) {
-
-    .nav-links {
-        position: absolute;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        padding: 25px;
-        background: #080b10;
-        border-bottom: 1px solid #202731;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .navbar > .discord-btn {
-        display: none;
-    }
-
-    .hero-side {
-        display: none;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stat {
-        border-bottom: 1px solid #1a2029;
-    }
-
-    .offer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 550px) {
-
-    .section {
-        padding: 70px 0;
-    }
-
-    .hero h1 {
-        font-size: 52px;
-        letter-spacing: -2px;
-    }
-
-    .hero-subtitle {
-        font-size: 15px;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .stat {
-        padding: 25px 15px;
-    }
-
-    .offer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        min-height: 260px;
-    }
-
-    .feature-box {
-        min-height: 280px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .copyright {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>THE SYNDICATE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #08090b;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #1d1f23;
+            background: rgba(8, 9, 11, 0.95);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #6ea8ff;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .hero {
+            min-height: calc(100vh - 75px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #292d34;
+            background: #111318;
+            color: #8eaee8;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 12vw, 100px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .subtitle {
+            color: #a5a8ae;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #ffffff;
+            color: #08090b;
+        }
+
+        .secondary {
+            border: 1px solid #30343b;
+            color: #ffffff;
+            background: #111318;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 80px 7%;
+            border-top: 1px solid #181a1e;
+        }
+
+        .section h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .section-intro {
+            color: #858990;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #101216;
+            border: 1px solid #202329;
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #888c94;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 30px 7%;
+            border-top: 1px solid #181a1e;
+            color: #666a72;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+    <nav>
+        <div class="logo">
+            THE <span>SYNDICATE</span>
+        </div>
 
-<header>
+        <a href="https://discord.gg/syndicateps">
+            Discord
+        </a>
+    </nav>
 
-<div class="container navbar">
 
-<a href="#home" class="logo">
-    <div class="logo-icon">
-        <span>S</span>
-    </div>
-    THE SYNDICATE
-</a>
+    <section class="hero">
 
-<nav class="nav-links" id="navLinks">
+        <div class="hero-content">
 
-<a href="#home" class="active">Home</a>
-<a href="#community">Community</a>
-<a href="#bot">Syndicate Bot</a>
-<a href="#gaming">Gaming</a>
-<a href="#projects">Projects</a>
-<a href="#news">News</a>
-<a href="#support">Support</a>
-<a href="#about">About</a>
+            <div class="tag">
+                GAMING • TECHNOLOGY • COMMUNITY
+            </div>
 
-</nav>
+            <h1>
+                THE<br>SYNDICATE
+            </h1>
 
-<a class="discord-btn"
-   href="https://discord.gg/syndicateps"
-   target="_blank">
-   Join Discord
-</a>
+            <p class="subtitle">
+                More than a community.
+                A place for gaming, technology, projects,
+                creativity and people building something together.
+            </p>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <div class="buttons">
 
-</div>
+                <a
+                    class="btn primary"
+                    href="https://discord.gg/syndicateps"
+                    target="_blank"
+                >
+                    JOIN THE SYNDICATE
+                </a>
 
-</header>
+                <a
+                    class="btn secondary"
+                    href="#about"
+                >
+                    EXPLORE
+                </a>
 
+            </div>
 
-<!-- =========================
-     HERO
-========================= -->
+        </div>
 
-<section class="hero" id="home">
+    </section>
 
-<div class="container hero-content">
 
-<div class="hero-small">
-WELCOME TO
-</div>
+    <section class="section" id="about">
 
-<h1>
-THE <span>SYNDICATE</span>
-</h1>
+        <h2>What is Syndicate?</h2>
 
-<p class="hero-subtitle">
-More than a community. A modern platform built around
-gaming, technology, projects and people.
-</p>
+        <p class="section-intro">
+            One platform. Multiple worlds.
+        </p>
 
-<div class="hero-buttons">
+        <div class="cards">
 
-<a class="btn-primary"
-   href="https://discord.gg/syndicateps"
-   target="_blank">
-   JOIN THE SYNDICATE
-</a>
+            <div class="card">
+                <h3>🎮 Gaming</h3>
 
-<a class="btn-secondary" href="#community">
-   EXPLORE PLATFORM →
-</a>
+                <p>
+                    Find players, build crews, discover games
+                    and enjoy gaming without the unnecessary noise.
+                </p>
+            </div>
 
-</div>
 
-</div>
+            <div class="card">
+                <h3>🤖 Syndicate Bot</h3>
 
-<div class="hero-side">
-GAMING • TECHNOLOGY • COMMUNITY • PROJECTS
-</div>
+                <p>
+                    Powerful Discord tools for moderation,
+                    AI, translation, security and community management.
+                </p>
+            </div>
 
-</section>
 
+            <div class="card">
+                <h3>⚙️ Projects</h3>
 
-<!-- =========================
-     STATS
-========================= -->
+                <p>
+                    Explore the projects, tools and ideas
+                    being developed under The Syndicate.
+                </p>
+            </div>
 
-<section class="stats">
+        </div>
 
-<div class="container stats-grid">
+    </section>
 
-<div class="stat">
-<div class="stat-number">01</div>
-<div class="stat-name">Community</div>
-</div>
 
-<div class="stat">
-<div class="stat-number">02</div>
-<div class="stat-name">Technology</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">03</div>
-<div class="stat-name">Gaming</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">04</div>
-<div class="stat-name">Projects</div>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     WHAT WE OFFER
-========================= -->
-
-<section class="section" id="community">
-
-<div class="container">
-
-<div class="section-label">
-THE SYNDICATE
-</div>
-
-<h2 class="section-title">
-Everything in one place.
-</h2>
-
-<p class="section-text">
-From community tools and gaming to technology and upcoming
-projects, Syndicate is designed to bring everything together.
-</p>
-
-
-<div class="offer-grid">
-
-<div class="card">
-
-<div class="card-icon">◉</div>
-
-<h3>Community</h3>
-
-<p>
-Meet people, join discussions, discover events and become
-part of the Syndicate community.
-</p>
-
-<a class="card-link" href="#community">
-Explore →
-</a>
-
-</div>
-
-
-<div class="card" id="bot">
-
-<div class="card-icon">&lt;/&gt;</div>
-
-<h3>Syndicate Bot</h3>
-
-<p>
-Powerful Discord tools including moderation, AI,
-translation, automation and community systems.
-</p>
-
-<a class="card-link" href="#bot">
-View Bot →
-</a>
-
-</div>
-
-
-<div class="card" id="gaming">
-
-<div class="card-icon">⌁</div>
-
-<h3>Gaming</h3>
-
-<p>
-Gaming communities, players, events and activities
-across multiple games and platforms.
-</p>
-
-<a class="card-link" href="#gaming">
-Explore Gaming →
-</a>
-
-</div>
-
-
-<div class="card" id="projects">
-
-<div class="card-icon">✦</div>
-
-<h3>Projects</h3>
-
-<p>
-Apps, websites, tools and new ideas developed under
-the Syndicate brand.
-</p>
-
-<a class="card-link" href="#projects">
-View Projects →
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     BOT / TECHNOLOGY
-========================= -->
-
-<section class="section feature">
-
-<div class="container feature-grid">
-
-<div>
-
-<div class="section-label">
-TECHNOLOGY
-</div>
-
-<h2 class="section-title">
-Syndicate Bot
-</h2>
-
-<p class="section-text">
-A powerful Discord ecosystem designed to make communities
-safer, smarter and easier to manage.
-</p>
-
-<div class="feature-list">
-
-<div class="feature-item">
-<span class="check">✓</span>
-Advanced Moderation
-</div>
-
-<div class="feature-item">
-<span class="check">✓</span>
-AI & Intelligent Tools
-</div>
-
-<div class="feature-item">
-<span class="check">✓</span>
-Translation System
-</div>
-
-<div class="feature-item">
-<span class="check">✓</span>
-LFG & Community Tools
-</div>
-
-</div>
-
-</div>
-
-
-<div class="feature-box">
-
-<div class="syndicate-symbol"></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     NEWS
-========================= -->
-
-<section class="section" id="news">
-
-<div class="container">
-
-<div class="section-label">
-NEWS & UPDATES
-</div>
-
-<h2 class="section-title">
-Latest from Syndicate.
-</h2>
-
-<p class="section-text">
-Announcements, community updates, gaming news and
-new project releases.
-</p>
-
-
-<div class="news-grid">
-
-<article class="news-card">
-
-<div class="news-image">
-◈
-</div>
-
-<div class="news-body">
-
-<div class="news-tag">
-ANNOUNCEMENT
-</div>
-
-<h3>
-Welcome to The Syndicate
-</h3>
-
-<div class="news-date">
-OCT 2026
-</div>
-
-</div>
-
-</article>
-
-
-<article class="news-card">
-
-<div class="news-image">
-⌘
-</div>
-
-<div class="news-body">
-
-<div class="news-tag">
-BOT
-</div>
-
-<h3>
-Syndicate Bot Updates
-</h3>
-
-<div class="news-date">
-COMING SOON
-</div>
-
-</div>
-
-</article>
-
-
-<article class="news-card">
-
-<div class="news-image">
-✦
-</div>
-
-<div class="news-body">
-
-<div class="news-tag">
-PROJECT
-</div>
-
-<h3>
-New Syndicate Projects
-</h3>
-
-<div class="news-date">
-COMING SOON
-</div>
-
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="cta" id="support">
-
-<div class="container">
-
-<div class="cta-box">
-
-<h2>
-Become part of it.
-</h2>
-
-<p>
-The Syndicate is growing. Join the community and
-be part of what comes next.
-</p>
-
-<a class="btn-primary"
-   href="https://discord.gg/syndicateps"
-   target="_blank">
-   JOIN DISCORD
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer id="about">
-
-<div class="container">
-
-<div class="footer-grid">
-
-<div class="footer-brand">
-
-<a href="#home" class="logo">
-    <div class="logo-icon">
-        <span>S</span>
-    </div>
-    THE SYNDICATE
-</a>
-
-<p>
-Gaming • Technology • Community • Projects
-</p>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-EXPLORE
-</div>
-
-<div class="footer-links">
-<a href="#home">Home</a>
-<a href="#community">Community</a>
-<a href="#gaming">Gaming</a>
-<a href="#projects">Projects</a>
-</div>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-SYNDICATE
-</div>
-
-<div class="footer-links">
-<a href="#bot">Syndicate Bot</a>
-<a href="#news">News</a>
-<a href="#support">Support</a>
-<a href="#about">About</a>
-</div>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-COMMUNITY
-</div>
-
-<div class="footer-links">
-
-<a href="https://discord.gg/syndicateps"
-   target="_blank">
-   Discord
-</a>
-
-<a href="#">
-   Instagram
-</a>
-
-<a href="#">
-   YouTube
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="copyright">
-
-<span>
-© 2026 THE SYNDICATE. All rights reserved.
-</span>
-
-<span>
-Different people. Same vision.
-</span>
-
-</div>
-
-</div>
-
-</footer>
-
-
-<script>
-
-function toggleMenu() {
-
-    const menu = document.getElementById("navLinks");
-
-    menu.classList.toggle("show");
-
-}
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        document.getElementById("navLinks")
-        .classList.remove("show");
-
-    });
-
-});
-
-</script>
+    <footer>
+        © 2026 THE SYNDICATE. All rights reserved.
+    </footer>
 
 </body>
-    </html>
+</html>
