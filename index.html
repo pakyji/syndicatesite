@@ -13,6 +13,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: #08090b;
             color: #ffffff;
@@ -27,7 +31,7 @@
             justify-content: space-between;
             padding: 0 7%;
             border-bottom: 1px solid #1d1f23;
-            background: rgba(8, 9, 11, 0.95);
+            background: #08090b;
         }
 
         .logo {
@@ -46,13 +50,17 @@
             font-size: 14px;
         }
 
+        nav a:hover {
+            color: #ffffff;
+        }
+
         .hero {
             min-height: calc(100vh - 75px);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         .hero-content {
@@ -72,7 +80,7 @@
         }
 
         h1 {
-            font-size: clamp(48px, 12vw, 100px);
+            font-size: clamp(50px, 12vw, 100px);
             line-height: 0.95;
             letter-spacing: -4px;
             margin-bottom: 25px;
@@ -82,7 +90,7 @@
             color: #a5a8ae;
             font-size: 18px;
             line-height: 1.6;
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto 35px;
         }
 
@@ -95,12 +103,16 @@
 
         .btn {
             display: inline-block;
-            padding: 14px 24px;
+            padding: 14px 23px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
             transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
         .primary {
@@ -109,13 +121,9 @@
         }
 
         .secondary {
+            background: #111318;
             border: 1px solid #30343b;
             color: #ffffff;
-            background: #111318;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
         }
 
         .section {
@@ -144,6 +152,17 @@
             border: 1px solid #202329;
             border-radius: 14px;
             padding: 28px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #343942;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-bottom: 18px;
         }
 
         .card h3 {
@@ -157,21 +176,46 @@
             font-size: 14px;
         }
 
+        .bot-preview {
+            margin-top: 25px;
+            background: #0e1013;
+            border: 1px solid #202329;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .bot-preview h3 {
+            margin-bottom: 10px;
+        }
+
+        .bot-preview p {
+            color: #888c94;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .bot-link {
+            color: #6ea8ff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
         footer {
-            padding: 30px 7%;
+            padding: 30px 20px;
+            text-align: center;
             border-top: 1px solid #181a1e;
             color: #666a72;
             font-size: 13px;
-            text-align: center;
         }
 
         @media (max-width: 700px) {
+
             nav {
                 padding: 0 20px;
             }
 
-            .cards {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 50px 20px;
             }
 
             h1 {
@@ -181,22 +225,40 @@
             .subtitle {
                 font-size: 16px;
             }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 65px 20px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- NAVIGATION -->
+
     <nav>
+
         <div class="logo">
             THE <span>SYNDICATE</span>
         </div>
 
-        <a href="https://discord.gg/syndicateps">
+        <a
+            href="https://discord.gg/syndicateps"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             Discord
         </a>
+
     </nav>
 
+
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -216,15 +278,18 @@
                 creativity and people building something together.
             </p>
 
+
             <div class="buttons">
 
                 <a
                     class="btn primary"
                     href="https://discord.gg/syndicateps"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     JOIN THE SYNDICATE
                 </a>
+
 
                 <a
                     class="btn secondary"
@@ -233,12 +298,22 @@
                     EXPLORE
                 </a>
 
+
+                <a
+                    class="btn secondary"
+                    href="bot.html"
+                >
+                    SYNDICATE BOT
+                </a>
+
             </div>
 
         </div>
 
     </section>
 
+
+    <!-- ABOUT -->
 
     <section class="section" id="about">
 
@@ -248,44 +323,103 @@
             One platform. Multiple worlds.
         </p>
 
+
         <div class="cards">
 
+
             <div class="card">
-                <h3>🎮 Gaming</h3>
+
+                <div class="card-icon">
+                    🎮
+                </div>
+
+                <h3>Gaming</h3>
 
                 <p>
                     Find players, build crews, discover games
-                    and enjoy gaming without the unnecessary noise.
+                    and enjoy gaming without unnecessary noise.
                 </p>
+
             </div>
 
 
             <div class="card">
-                <h3>🤖 Syndicate Bot</h3>
+
+                <div class="card-icon">
+                    🤖
+                </div>
+
+                <h3>Syndicate Bot</h3>
 
                 <p>
                     Powerful Discord tools for moderation,
                     AI, translation, security and community management.
                 </p>
+
             </div>
 
 
             <div class="card">
-                <h3>⚙️ Projects</h3>
+
+                <div class="card-icon">
+                    ⚙️
+                </div>
+
+                <h3>Projects</h3>
 
                 <p>
                     Explore the projects, tools and ideas
                     being developed under The Syndicate.
                 </p>
+
             </div>
+
 
         </div>
 
     </section>
 
 
+    <!-- BOT -->
+
+    <section class="section">
+
+        <h2>Syndicate Bot</h2>
+
+        <p class="section-intro">
+            Tools built to make your Discord community better.
+        </p>
+
+
+        <div class="bot-preview">
+
+            <h3>
+                🤖 The Syndicate Bot
+            </h3>
+
+            <p>
+                Security, moderation, AI, translation,
+                gaming utilities and more.
+            </p>
+
+            <a
+                class="bot-link"
+                href="bot.html"
+            >
+                Explore Syndicate Bot →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
     <footer>
+
         © 2026 THE SYNDICATE. All rights reserved.
+
     </footer>
 
 </body>
