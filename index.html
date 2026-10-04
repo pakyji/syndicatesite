@@ -24,16 +24,16 @@
             min-height: 100vh;
         }
 
-        /* NAVIGATION */
+        /* NAV */
 
         nav {
-            min-height: 75px;
+            height: 75px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 7%;
             border-bottom: 1px solid #1d1f23;
-            background: #08090b;
+            background: rgba(8, 9, 11, 0.96);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -43,41 +43,35 @@
             font-size: 20px;
             font-weight: 800;
             letter-spacing: 2px;
-            white-space: nowrap;
         }
 
         .logo span {
             color: #6ea8ff;
         }
 
-        .nav-links {
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 18px;
         }
 
-        .nav-links a {
-            color: #858990;
+        .nav-right a {
+            color: #8c9098;
             text-decoration: none;
             font-size: 13px;
-            font-weight: 600;
             transition: 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-right a:hover {
             color: #ffffff;
         }
 
-        .discord-nav {
+        .nav-discord {
             color: #ffffff !important;
-            background: #111318;
             border: 1px solid #30343b;
+            background: #111318;
             padding: 9px 14px;
             border-radius: 7px;
-        }
-
-        .discord-nav:hover {
-            border-color: #6ea8ff;
         }
 
 
@@ -89,11 +83,30 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #1d4ed8;
+            opacity: 0.06;
+            filter: blur(130px);
+            border-radius: 50%;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 850px;
+            position: relative;
+            z-index: 1;
         }
 
         .tag {
@@ -109,7 +122,7 @@
         }
 
         h1 {
-            font-size: clamp(52px, 12vw, 105px);
+            font-size: clamp(55px, 12vw, 105px);
             line-height: 0.92;
             letter-spacing: -5px;
             margin-bottom: 28px;
@@ -119,7 +132,7 @@
             color: #a5a8ae;
             font-size: 18px;
             line-height: 1.7;
-            max-width: 700px;
+            max-width: 680px;
             margin: 0 auto 35px;
         }
 
@@ -158,8 +171,12 @@
             color: #ffffff;
         }
 
+        .secondary:hover {
+            border-color: #59606b;
+        }
 
-        /* SECTIONS */
+
+        /* SECTION */
 
         .section {
             padding: 90px 7%;
@@ -167,14 +184,14 @@
         }
 
         .section h2 {
-            font-size: 36px;
+            font-size: 34px;
             margin-bottom: 12px;
         }
 
         .section-intro {
             color: #858990;
-            line-height: 1.7;
-            margin-bottom: 38px;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
 
@@ -190,8 +207,8 @@
             background: #101216;
             border: 1px solid #202329;
             border-radius: 14px;
-            padding: 30px;
-            transition: 0.2s;
+            padding: 28px;
+            transition: 0.25s;
         }
 
         .card:hover {
@@ -205,49 +222,48 @@
         }
 
         .card h3 {
-            font-size: 19px;
             margin-bottom: 10px;
+            font-size: 19px;
         }
 
         .card p {
             color: #888c94;
-            line-height: 1.7;
+            line-height: 1.6;
             font-size: 14px;
         }
 
 
-        /* FEATURED */
+        /* FEATURE */
 
-        .featured {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .feature-box {
+        .feature {
+            margin-top: 22px;
             background: #0e1013;
             border: 1px solid #202329;
             border-radius: 14px;
-            padding: 32px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
-        .feature-box h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+        .feature h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
         }
 
-        .feature-box p {
+        .feature p {
             color: #888c94;
-            line-height: 1.7;
+            line-height: 1.6;
             font-size: 14px;
-            margin-bottom: 22px;
+            max-width: 650px;
         }
 
         .feature-link {
             color: #6ea8ff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
+            white-space: nowrap;
         }
 
 
@@ -260,7 +276,7 @@
         }
 
         .cta h2 {
-            font-size: 40px;
+            font-size: 38px;
             margin-bottom: 15px;
         }
 
@@ -273,7 +289,7 @@
         /* FOOTER */
 
         footer {
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
             border-top: 1px solid #181a1e;
             color: #666a72;
@@ -289,9 +305,9 @@
         }
 
         .footer-links a {
-            color: #777b83;
+            color: #70747c;
             text-decoration: none;
-            font-size: 13px;
+            transition: 0.2s;
         }
 
         .footer-links a:hover {
@@ -301,56 +317,43 @@
 
         /* MOBILE */
 
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
 
-            .nav-links {
-                gap: 12px;
+            nav {
+                padding: 0 20px;
             }
 
-            .nav-links a {
-                font-size: 11px;
+            .nav-right a:not(.nav-discord) {
+                display: none;
             }
 
             .cards {
                 grid-template-columns: 1fr;
             }
 
-            .featured {
-                grid-template-columns: 1fr;
+            .feature {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
-
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
 
             nav {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 14px;
+                height: 70px;
             }
 
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 9px 14px;
-            }
-
-            .nav-links a {
-                font-size: 11px;
-            }
-
-            .discord-nav {
-                padding: 7px 10px;
+            .logo {
+                font-size: 17px;
             }
 
             .hero {
-                min-height: calc(100vh - 120px);
-                padding: 65px 20px;
+                min-height: calc(100vh - 70px);
+                padding: 60px 20px;
             }
 
             h1 {
-                font-size: clamp(48px, 15vw, 80px);
+                font-size: clamp(50px, 15vw, 80px);
                 letter-spacing: -3px;
             }
 
@@ -384,47 +387,27 @@
             THE <span>SYNDICATE</span>
         </div>
 
-        <div class="nav-links">
-
-            <a href="index.html">
-                HOME
-            </a>
+        <div class="nav-right">
 
             <a href="community.html">
-                COMMUNITY
+                Community
             </a>
 
             <a href="gaming.html">
-                GAMING
-            </a>
-
-            <a href="bot.html">
-                BOT
+                Gaming
             </a>
 
             <a href="projects.html">
-                PROJECTS
-            </a>
-
-            <a href="news.html">
-                NEWS
-            </a>
-
-            <a href="support.html">
-                SUPPORT
-            </a>
-
-            <a href="about.html">
-                ABOUT
+                Projects
             </a>
 
             <a
-                class="discord-nav"
+                class="nav-discord"
                 href="https://discord.gg/syndicateps"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                DISCORD
+                Discord
             </a>
 
         </div>
@@ -448,10 +431,10 @@
 
             <p class="subtitle">
                 More than a community.
-                A digital space built around gaming,
-                technology, creativity, projects and people
-                building something together.
+                A place for gaming, technology, projects,
+                creativity and people building something together.
             </p>
+
 
             <div class="buttons">
 
@@ -464,12 +447,14 @@
                     JOIN THE SYNDICATE
                 </a>
 
+
                 <a
                     class="btn secondary"
-                    href="#explore"
+                    href="#about"
                 >
                     EXPLORE
                 </a>
+
 
                 <a
                     class="btn secondary"
@@ -485,41 +470,23 @@
     </section>
 
 
-    <!-- EXPLORE -->
+    <!-- ABOUT -->
 
     <section
         class="section"
-        id="explore"
+        id="about"
     >
 
         <h2>
-            One Platform. Multiple Worlds.
+            What is Syndicate?
         </h2>
 
         <p class="section-intro">
-            Explore everything being built under The Syndicate.
+            One platform. Multiple worlds.
         </p>
 
 
         <div class="cards">
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    👥
-                </div>
-
-                <h3>
-                    Community
-                </h3>
-
-                <p>
-                    A place to meet people, talk, share interests,
-                    find teammates and become part of the community.
-                </p>
-
-            </div>
 
 
             <div class="card">
@@ -533,8 +500,8 @@
                 </h3>
 
                 <p>
-                    Gaming sessions, LFG, crews, multiplayer
-                    communities and people ready to play.
+                    Find players, build crews, discover games
+                    and enjoy gaming with the community.
                 </p>
 
             </div>
@@ -551,8 +518,8 @@
                 </h3>
 
                 <p>
-                    Moderation, security, AI, translation,
-                    gaming tools and community automation.
+                    Powerful Discord tools for moderation,
+                    AI, translation, security and community management.
                 </p>
 
             </div>
@@ -569,44 +536,8 @@
                 </h3>
 
                 <p>
-                    Discover tools, applications, experiments
-                    and other projects created under Syndicate.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    📰
-                </div>
-
-                <h3>
-                    News
-                </h3>
-
-                <p>
-                    Updates, announcements and important
-                    information from The Syndicate.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🛠️
-                </div>
-
-                <h3>
-                    Support
-                </h3>
-
-                <p>
-                    Need help? Find information and support
-                    for Syndicate services and projects.
+                    Explore tools, applications and ideas
+                    being developed under The Syndicate.
                 </p>
 
             </div>
@@ -617,108 +548,82 @@
     </section>
 
 
-    <!-- FEATURED -->
+    <!-- SYNDICATE BOT -->
 
     <section class="section">
 
         <h2>
-            Featured
+            Syndicate Bot
         </h2>
 
         <p class="section-intro">
-            Explore the core parts of The Syndicate.
+            Tools built to make your Discord community better.
         </p>
 
 
-        <div class="featured">
+        <div class="feature">
 
-
-            <div class="feature-box">
+            <div>
 
                 <h3>
-                    🤖 Syndicate Bot
+                    🤖 The Syndicate Bot
                 </h3>
 
                 <p>
-                    A powerful Discord bot designed for
-                    security, moderation, AI, translation,
-                    gaming and community management.
+                    Security, moderation, AI, translation,
+                    gaming utilities, LFG and more.
                 </p>
-
-                <a
-                    class="feature-link"
-                    href="bot.html"
-                >
-                    Explore Bot →
-                </a>
 
             </div>
 
 
-            <div class="feature-box">
+            <a
+                class="feature-link"
+                href="bot.html"
+            >
+                Explore Bot →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- GAMING -->
+
+    <section class="section">
+
+        <h2>
+            Gaming
+        </h2>
+
+        <p class="section-intro">
+            Find players, build crews and play together.
+        </p>
+
+
+        <div class="feature">
+
+            <div>
 
                 <h3>
-                    🎮 Gaming
+                    🎮 Syndicate Gaming
                 </h3>
 
                 <p>
-                    Find players, build crews, join sessions
-                    and discover new ways to play with
-                    The Syndicate community.
+                    GTA Online, PlayStation, multiplayer games,
+                    LFG sessions and community gaming.
                 </p>
-
-                <a
-                    class="feature-link"
-                    href="gaming.html"
-                >
-                    Explore Gaming →
-                </a>
 
             </div>
 
 
-            <div class="feature-box">
-
-                <h3>
-                    ⚙️ Projects
-                </h3>
-
-                <p>
-                    Explore tools, applications and ideas
-                    currently being developed by The Syndicate.
-                </p>
-
-                <a
-                    class="feature-link"
-                    href="projects.html"
-                >
-                    Explore Projects →
-                </a>
-
-            </div>
-
-
-            <div class="feature-box">
-
-                <h3>
-                    👥 Community
-                </h3>
-
-                <p>
-                    Connect with members, find people with
-                    similar interests and become part of
-                    the Syndicate.
-                </p>
-
-                <a
-                    class="feature-link"
-                    href="community.html"
-                >
-                    Explore Community →
-                </a>
-
-            </div>
-
+            <a
+                class="feature-link"
+                href="gaming.html"
+            >
+                Explore Gaming →
+            </a>
 
         </div>
 
@@ -735,7 +640,6 @@
 
         <p>
             Gaming. Technology. Community. Projects.
-            Everything in one place.
         </p>
 
         <a
@@ -755,10 +659,6 @@
     <footer>
 
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
 
             <a href="community.html">
                 Community
@@ -793,7 +693,6 @@
         © 2026 THE SYNDICATE. All rights reserved.
 
     </footer>
-
 
 </body>
 </html>
